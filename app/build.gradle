@@ -32,3 +32,7 @@ jar {
 application {
     mainClassName = 'hexlet.code.App'
 }
+
+run {
+    standardInput = System.in
+}
