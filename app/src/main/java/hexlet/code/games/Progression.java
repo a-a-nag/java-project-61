@@ -12,7 +12,7 @@ public class Progression {
 
         for (int i = 0; i < questions.length; i++) {
             questions[i] = "Question: " + returnProgression();
-            rightAnswers[i] = getMissedNumber();
+            rightAnswers[i] = missedNumber;
         }
 
         Engine.startGame(gameRule, questions, rightAnswers);
@@ -38,7 +38,7 @@ public class Progression {
 
             if (i == randomIndexPosition) {
                 progression = progression + ".." + " ";
-                setMissedNumber(String.valueOf(nextNumber));
+                missedNumber = String.valueOf(nextNumber);
                 nextNumber = nextNumber + commonDifference;
                 continue;
             }
@@ -48,12 +48,5 @@ public class Progression {
         }
 
         return progression.trim();
-    }
-    public static String getMissedNumber() {
-        return missedNumber;
-    }
-
-    public static void setMissedNumber(String missedNumber) {
-        Progression.missedNumber = missedNumber;
     }
 }
