@@ -18,7 +18,7 @@ public class Engine {
                 return;
             }
 
-            if (countVictories == MAX_VICTORIES_TO_FINISH_GAME ) {
+            if (countVictories == MAX_VICTORIES_TO_FINISH_GAME) {
                 System.out.printf("Congratulations, %s!", Greetings.userName);
                 return;
             }

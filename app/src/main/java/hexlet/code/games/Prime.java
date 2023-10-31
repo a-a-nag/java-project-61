@@ -10,10 +10,10 @@ public class Prime {
         String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
 
         Random random = new Random();
-        final int MAX_BOUND = 1000;
+        final int bound = 1000;
 
         for (int i = 0; i < questions.length; i++) {
-            int number = random.nextInt(MAX_BOUND);
+            int number = random.nextInt(bound);
 
             questions[i] = "Question: " + number;
             rightAnswers[i] = checkIfNumberIsPrime(number);

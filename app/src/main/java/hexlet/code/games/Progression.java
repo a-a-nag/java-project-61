@@ -20,13 +20,13 @@ public class Progression {
     public static String returnProgression() {
         Random random = new Random();
 
-        final int MAX_BOUND = 10;
-        int firstNumber = random.nextInt(MAX_BOUND);
+        final int bound = 10;
+        int firstNumber = random.nextInt(bound);
         int nextNumber = firstNumber;
-        int commonDifference = random.nextInt(MAX_BOUND);
+        int commonDifference = random.nextInt(bound);
 
         String progression = "";
-        int progressionLength = 10;
+        final int progressionLength = 10;
         int randomIndexPosition = random.nextInt(progressionLength);
 
         for (int i = 0; i < progressionLength; i++) {

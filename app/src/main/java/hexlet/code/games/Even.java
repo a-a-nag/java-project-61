@@ -10,9 +10,9 @@ public class Even {
         String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
 
         Random random = new Random();
-        final int MAX_BOUND = 1000;
+        final int bound = 1000;
         for (int i = 0; i < questions.length; i++) {
-            int randomNumber = random.nextInt(MAX_BOUND);
+            int randomNumber = random.nextInt(bound);
 
             questions[i] = "Question: " + randomNumber;
             rightAnswers[i] = randomNumber % 2 == 0 ? "yes" : "no";

@@ -10,11 +10,11 @@ public class Calc {
         String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME];
 
         Random random = new Random();
-        final int MAX_BOUND = 100;
+        final int bound = 100;
 
         for (int i = 0; i < questions.length; i++) {
-            int randomNumber1 = random.nextInt(MAX_BOUND);
-            int randomNumber2 = random.nextInt(MAX_BOUND);
+            int randomNumber1 = random.nextInt(bound);
+            int randomNumber2 = random.nextInt(bound);
             String randomMathematicalOperator = returnRandomMathematicalOperator();
 
             questions[i] = String.format("Question: %d %s %d",
@@ -43,8 +43,8 @@ public class Calc {
 
     public static String returnRandomMathematicalOperator() {
         Random random = new Random();
-        final int MAX_BOUND = 3;
-        int randomNumber = random.nextInt(MAX_BOUND);
+        final int bound = 3;
+        int randomNumber = random.nextInt(bound);
 
         String[] mathematicalOperators = {"+", "-", "*"};
 
