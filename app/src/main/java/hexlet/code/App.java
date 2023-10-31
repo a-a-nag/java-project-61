@@ -30,7 +30,7 @@ public class App {
                 Calc.solveExpression();
                 break;
             case "4":
-                GCD.findGCD();
+                GCD.playGCD();
                 break;
             case "5":
                 Progression.solveProgression();
