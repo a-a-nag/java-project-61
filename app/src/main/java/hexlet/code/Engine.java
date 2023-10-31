@@ -2,9 +2,9 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static int countVictories = 0;
+    private static int countVictories = 0;
     public static final int MAX_VICTORIES_TO_FINISH_GAME = 3;
-    public static boolean hasAnsweredTheQuestion = true;
+    private static boolean hasAnsweredTheQuestion = true;
 
     public static void startGame(String gameRule, String[] questions, String[] rightAnswers) {
         Greetings.greet();
@@ -12,14 +12,14 @@ public class Engine {
         System.out.println(gameRule);
 
         while (true) {
-            printQuestion(questions[countVictories], rightAnswers[countVictories]);
+            printQuestion(questions[getCountVictories()], rightAnswers[getCountVictories()]);
 
-            if (!hasAnsweredTheQuestion) {
+            if (!getHasAnsweredTheQuestion()) {
                 return;
             }
 
-            if (countVictories == MAX_VICTORIES_TO_FINISH_GAME) {
-                System.out.printf("Congratulations, %s!", Greetings.userName);
+            if (getCountVictories() == MAX_VICTORIES_TO_FINISH_GAME) {
+                System.out.printf("Congratulations, %s!", Greetings.getUserName());
                 return;
             }
         }
@@ -33,13 +33,29 @@ public class Engine {
         System.out.println("Your answer: " + userAnswer);
 
         if (userAnswer.equals(rightAnswer)) {
-            hasAnsweredTheQuestion = true;
-            countVictories++;
+            setHasAnsweredTheQuestion(true);
+            setCountVictories();
             System.out.println("Correct!");
         } else {
-            hasAnsweredTheQuestion = false;
+            setHasAnsweredTheQuestion(false);
             System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, rightAnswer);
-            System.out.printf("Let's try again, %s!", Greetings.userName);
+            System.out.printf("Let's try again, %s!", Greetings.getUserName());
         }
+    }
+
+    public static int getCountVictories() {
+        return countVictories;
+    }
+
+    public static void setCountVictories() {
+        countVictories++;
+    }
+
+    public static boolean getHasAnsweredTheQuestion() {
+        return hasAnsweredTheQuestion;
+    }
+
+    public static void setHasAnsweredTheQuestion(boolean hasAnswered) {
+        hasAnsweredTheQuestion = hasAnswered;
     }
 }
