@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Engine {
     public static int countVictories = 0;
-    public static int victoriesNeededToFinishGame = 3;
+    public static final int MAX_VICTORIES_TO_FINISH_GAME = 3;
     public static boolean hasAnsweredTheQuestion = true;
 
     public static void startGame(String gameRule, String[] questions, String[] rightAnswers) {
@@ -18,7 +18,7 @@ public class Engine {
                 return;
             }
 
-            if (countVictories == victoriesNeededToFinishGame) {
+            if (countVictories == MAX_VICTORIES_TO_FINISH_GAME ) {
                 System.out.printf("Congratulations, %s!", Greetings.userName);
                 return;
             }

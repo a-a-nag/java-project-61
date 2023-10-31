@@ -7,8 +7,8 @@ public class Progression {
     public static void solveProgression() {
         String gameRule = "What number is missing in the progression?";
 
-        String[] questions = new String[Engine.victoriesNeededToFinishGame];
-        String[] rightAnswers = new String[Engine.victoriesNeededToFinishGame];
+        String[] questions = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
+        String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
 
         for (int i = 0; i < questions.length; i++) {
             questions[i] = "Question: " + returnProgression();
@@ -20,10 +20,10 @@ public class Progression {
     public static String returnProgression() {
         Random random = new Random();
 
-        int bound = 10;
-        int firstNumber = random.nextInt(bound);
+        final int MAX_BOUND = 10;
+        int firstNumber = random.nextInt(MAX_BOUND);
         int nextNumber = firstNumber;
-        int commonDifference = random.nextInt(bound);
+        int commonDifference = random.nextInt(MAX_BOUND);
 
         String progression = "";
         int progressionLength = 10;
