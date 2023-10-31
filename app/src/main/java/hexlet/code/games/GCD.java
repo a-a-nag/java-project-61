@@ -16,9 +16,6 @@ public class GCD {
             int randomNumber1 = random.nextInt(bound);
             int randomNumber2 = random.nextInt(bound);
 
-//            int randomNumber1 = 63;
-//            int randomNumber2 = 3;
-
             questions[i] = String.format("Question: %d %d", randomNumber1, randomNumber2);
 
             int min = Math.min(randomNumber1, randomNumber2);

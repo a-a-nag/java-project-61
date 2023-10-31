@@ -10,7 +10,7 @@ public class Calc {
         String[] rightAnswers = new String[Engine.victoriesNeededToFinishGame];
 
         Random random = new Random();
-        int bound = 1000;
+        int bound = 100;
 
         for (int i = 0; i < questions.length; i++) {
             int randomNumber1 = random.nextInt(bound);
