@@ -14,7 +14,9 @@ public class Engine {
         while (true) {
             printQuestion(questions[countVictories], rightAnswers[countVictories]);
 
-            if (!hasAnsweredTheQuestion) return;
+            if (!hasAnsweredTheQuestion) {
+                return;
+            }
 
             if (countVictories == victoriesNeededToFinishGame) {
                 System.out.printf("Congratulations, %s!", Greetings.userName);
