@@ -30,6 +30,7 @@ public class Engine {
                 break;
             }
         }
+        System.out.printf("Congratulations, %s!", Greetings.getUserName());
     }
 
     public static void setCountVictories() {
