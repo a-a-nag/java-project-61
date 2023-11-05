@@ -3,23 +3,24 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Prime {
+    private static final String GAME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final int MAX_BOUND = 1_000;
+    private static final int MAX_COLUMN = 2;
+    private static final int QUESTION_COLUMN_NUMBER = 0;
+    private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
     public static void primeGame() {
-        String gameRule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-
-        String[] questions = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
-        String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
+        String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
         Random random = new Random();
-        final int bound = 1000;
 
-        for (int i = 0; i < questions.length; i++) {
-            int number = random.nextInt(bound);
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int number = random.nextInt(MAX_BOUND);
 
-            questions[i] = "Question: " + number;
-            rightAnswers[i] = checkIfNumberIsPrime(number);
+            questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = "Question: " + number;
+            questionsAndAnswers[i][RIGHT_ANSWER_COLUMN_NUMBER] = checkIfNumberIsPrime(number);
         }
 
-        Engine.startGame(gameRule, questions, rightAnswers);
+        Engine.startGame(GAME_RULE, questionsAndAnswers);
     }
     public static String checkIfNumberIsPrime(int number) {
         if (number <= 1) {
@@ -31,7 +32,6 @@ public class Prime {
                 return "no";
             }
         }
-
         return "yes";
     }
 }

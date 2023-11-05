@@ -3,33 +3,33 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Progression {
+    private static final String GAME_RULE = "What number is missing in the progression?";
+    private static final int MAX_BOUND = 10;
+    private static final int MAX_PROGRESSION_LENGTH = 10;
+    private static final int MAX_COLUMN = 2;
+    private static final int QUESTION_COLUMN_NUMBER = 0;
+    private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
     private static String missedNumber;
     public static void solveProgression() {
-        String gameRule = "What number is missing in the progression?";
+        String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
-        String[] questions = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
-        String[] rightAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME ];
-
-        for (int i = 0; i < questions.length; i++) {
-            questions[i] = "Question: " + returnProgression();
-            rightAnswers[i] = missedNumber;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = "Question: " + returnProgression();
+            questionsAndAnswers[i][RIGHT_ANSWER_COLUMN_NUMBER] = missedNumber;
         }
-
-        Engine.startGame(gameRule, questions, rightAnswers);
+        Engine.startGame(GAME_RULE, questionsAndAnswers);
     }
     public static String returnProgression() {
         Random random = new Random();
 
-        final int bound = 10;
-        int firstNumber = random.nextInt(bound);
+        int firstNumber = random.nextInt(MAX_BOUND);
         int nextNumber = firstNumber;
-        int commonDifference = random.nextInt(bound);
+        int commonDifference = random.nextInt(MAX_BOUND);
 
         String progression = "";
-        final int progressionLength = 10;
-        int randomIndexPosition = random.nextInt(progressionLength);
+        int randomIndexPosition = random.nextInt(MAX_PROGRESSION_LENGTH);
 
-        for (int i = 0; i < progressionLength; i++) {
+        for (int i = 0; i < MAX_PROGRESSION_LENGTH; i++) {
             if (i == 0 && i != randomIndexPosition) {
                 progression = progression + firstNumber + " ";
                 nextNumber = nextNumber + commonDifference;
