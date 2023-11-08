@@ -8,6 +8,7 @@ public class GCD {
     private static final int MAX_COLUMN = 2;
     private static final int QUESTION_COLUMN_NUMBER = 0;
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
+
     public static void playGCD() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 

@@ -8,6 +8,7 @@ public class Calc {
     private static final int MAX_COLUMN = 2;
     private static final int QUESTION_COLUMN_NUMBER = 0;
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
+
     public static void solveExpression() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
@@ -20,8 +21,9 @@ public class Calc {
 
             questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = String.format("Question: %d %s %d",
                     randomNumber1, randomMathematicalOperator, randomNumber2);
-            questionsAndAnswers[i][RIGHT_ANSWER_COLUMN_NUMBER] =
-                    calculateExpression(randomNumber1, randomNumber2, randomMathematicalOperator);
+
+            int rightAnswer = calculateExpression(randomNumber1, randomNumber2, randomMathematicalOperator);
+            questionsAndAnswers[i][RIGHT_ANSWER_COLUMN_NUMBER] = String.valueOf(rightAnswer);
         }
 
         Engine.startGame(GAME_RULE, questionsAndAnswers);
@@ -37,7 +39,7 @@ public class Calc {
         return mathematicalOperators[randomNumber];
     }
 
-    public static String calculateExpression(int number1, int number2, String operator) {
+    public static int calculateExpression(int number1, int number2, String operator) {
         int result = 0;
 
         switch (operator) {
@@ -54,6 +56,6 @@ public class Calc {
                 break;
         }
 
-        return String.valueOf(result);
+        return result;
     }
 }

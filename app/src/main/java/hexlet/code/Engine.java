@@ -8,32 +8,34 @@ public class Engine {
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
 
     public static void startGame(String gameRule, String[][] questionsAndAnswers) {
-        Greetings.greet();
+        Scanner scanner = new Scanner(System.in);
+
+        String userName = "";
+
+        System.out.println("Welcome to the Brain Games!");
+        System.out.println("May I have your name?");
+
+        userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
 
         System.out.println(gameRule);
 
         while (countVictories < MAX_VICTORIES_TO_FINISH_GAME) {
             System.out.println(questionsAndAnswers[countVictories][QUESTION_COLUMN_NUMBER]);
 
-            Scanner scanner = new Scanner(System.in);
-
             String userAnswer = scanner.next();
             System.out.println("Your answer: " + userAnswer);
 
             if (userAnswer.equals(questionsAndAnswers[countVictories][RIGHT_ANSWER_COLUMN_NUMBER])) {
-                setCountVictories();
+                Engine.countVictories++;
                 System.out.println("Correct!");
             } else {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n",
                         userAnswer, questionsAndAnswers[countVictories][RIGHT_ANSWER_COLUMN_NUMBER]);
-                System.out.printf("Let's try again, %s!", Greetings.getUserName());
+                System.out.printf("Let's try again, %s!", userName);
                 break;
             }
         }
-        System.out.printf("Congratulations, %s!", Greetings.getUserName());
-    }
-
-    public static void setCountVictories() {
-        countVictories++;
+        System.out.printf("Congratulations, %s!", userName);
     }
 }

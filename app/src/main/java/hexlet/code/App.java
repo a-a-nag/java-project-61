@@ -4,9 +4,10 @@ import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
-
 import java.util.Scanner;
+
 public class App {
+
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
@@ -25,7 +26,7 @@ public class App {
 
         switch (gameNumber) {
             case "1":
-                Greetings.greet();
+                Cli.greeting();
                 break;
             case "2":
                 Even.checkIfNumberIsEven();
@@ -45,7 +46,7 @@ public class App {
             case "0":
                 break;
             default:
-                break;
+                throw new Error("Unknown number!");
         }
     }
 }

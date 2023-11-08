@@ -10,6 +10,7 @@ public class Progression {
     private static final int QUESTION_COLUMN_NUMBER = 0;
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
     private static String missedNumber;
+
     public static void solveProgression() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
@@ -19,6 +20,7 @@ public class Progression {
         }
         Engine.startGame(GAME_RULE, questionsAndAnswers);
     }
+
     public static String returnProgression() {
         Random random = new Random();
 
