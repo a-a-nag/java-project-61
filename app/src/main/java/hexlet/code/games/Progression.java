@@ -46,7 +46,7 @@ public class Progression {
         return convertProgressionToString(progression);
     }
 
-    public static String convertProgressionToString (String[] progression) {
+    public static String convertProgressionToString(String[] progression) {
         String newProgression = "";
 
         for (String element : progression) {
