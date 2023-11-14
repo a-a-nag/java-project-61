@@ -44,6 +44,7 @@ public class App {
                 Prime.primeGame();
                 break;
             case "0":
+                System.out.println("Goodbye!");
                 break;
             default:
                 throw new Error("Unknown number!");

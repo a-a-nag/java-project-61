@@ -1,23 +1,25 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
     private static final String GAME_RULE = "What is the result of the expression?";
-    private static final int MAX_BOUND = 100;
+    private static final int FROM_MIN = 0;
+    private static final int TO_MAX = 100;
     private static final int MAX_COLUMN = 2;
     private static final int QUESTION_COLUMN_NUMBER = 0;
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
+    private static final String[] MATHEMATICAL_OPERATORS = {"+", "-", "*"};
 
     public static void solveExpression() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
-        Random random = new Random();
-
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            int randomNumber1 = random.nextInt(MAX_BOUND);
-            int randomNumber2 = random.nextInt(MAX_BOUND);
-            String randomMathematicalOperator = returnRandomMathematicalOperator();
+            int randomNumber1 = Utils.generateRandomInt(FROM_MIN, TO_MAX);
+            int randomNumber2 = Utils.generateRandomInt(FROM_MIN, TO_MAX);
+
+            int index = Utils.generateRandomInt(FROM_MIN, MATHEMATICAL_OPERATORS.length);
+            String randomMathematicalOperator = MATHEMATICAL_OPERATORS[index];
 
             questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = String.format("Question: %d %s %d",
                     randomNumber1, randomMathematicalOperator, randomNumber2);
@@ -29,18 +31,8 @@ public class Calc {
         Engine.startGame(GAME_RULE, questionsAndAnswers);
     }
 
-    public static String returnRandomMathematicalOperator() {
-        Random random = new Random();
-        final int bound = 3;
-        int randomNumber = random.nextInt(bound);
-
-        String[] mathematicalOperators = {"+", "-", "*"};
-
-        return mathematicalOperators[randomNumber];
-    }
-
     public static int calculateExpression(int number1, int number2, String operator) {
-        int result = 0;
+        int result;
 
         switch (operator) {
             case "+":
@@ -53,7 +45,7 @@ public class Calc {
                 result = number1 * number2;
                 break;
             default:
-                break;
+                throw new Error("Unknown operator!");
         }
 
         return result;
