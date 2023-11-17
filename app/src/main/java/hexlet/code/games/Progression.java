@@ -9,49 +9,37 @@ public class Progression {
     private static final int MAX_COLUMN = 2;
     private static final int QUESTION_COLUMN_NUMBER = 0;
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
-    private static String missedNumber;
 
-    public static void solveProgression() {
+    public static void startProgression() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = "Question: " + createProgression();
+
+            int commonDifference  = Utils.generateRandomInt(FIRST_NUMBER, MAX_PROGRESSION_LENGTH);
+            String[] progression = makeProgression(FIRST_NUMBER, commonDifference, MAX_PROGRESSION_LENGTH);
+
+            int randomIndex = Utils.generateRandomInt(FIRST_NUMBER, MAX_PROGRESSION_LENGTH);
+            String missedNumber = progression[randomIndex];
+
+            progression[randomIndex] = "..";
+
+            questionsAndAnswers[i][QUESTION_COLUMN_NUMBER] = "Question: " + String.join(" ", progression);
             questionsAndAnswers[i][RIGHT_ANSWER_COLUMN_NUMBER] = missedNumber;
         }
         Engine.startGame(GAME_RULE, questionsAndAnswers);
     }
 
-    public static String createProgression() {
-        int commonDifference  = Utils.generateRandomInt(FIRST_NUMBER, MAX_PROGRESSION_LENGTH);
+    private static String[] makeProgression(int first, int step, int length) {
+        String[] progression = new String[length];
 
-        String[] progression = new String[MAX_PROGRESSION_LENGTH];
-        progression[0] = String.valueOf(FIRST_NUMBER);
-
-        int nextNumber = FIRST_NUMBER;
+        progression[0] = String.valueOf(first);
 
         for (int i = 1; i < progression.length; i++) {
-            nextNumber = nextNumber + commonDifference;
-            progression[i] = String.valueOf(nextNumber);
+
+            int previousNumber = Integer.valueOf(progression[i - 1] );
+            progression[i] = String.valueOf(previousNumber+ step);
         }
-        return hideElementInProgression(progression);
-    }
 
-    public static String hideElementInProgression(String[] progression) {
-        int randomIndex = Utils.generateRandomInt(FIRST_NUMBER, MAX_PROGRESSION_LENGTH);
-
-        Progression.missedNumber = progression[randomIndex];
-
-        progression[randomIndex] = "..";
-
-        return convertProgressionToString(progression);
-    }
-
-    public static String convertProgressionToString(String[] progression) {
-        String newProgression = "";
-
-        for (String element : progression) {
-            newProgression = newProgression + element + " ";
-        }
-        return newProgression.trim();
+        return progression;
     }
 }

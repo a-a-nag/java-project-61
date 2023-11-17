@@ -11,7 +11,7 @@ public class Calc {
     private static final int RIGHT_ANSWER_COLUMN_NUMBER = 1;
     private static final String[] MATHEMATICAL_OPERATORS = {"+", "-", "*"};
 
-    public static void solveExpression() {
+    public static void startCalc() {
         String[][] questionsAndAnswers = new String[Engine.MAX_VICTORIES_TO_FINISH_GAME][MAX_COLUMN];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {

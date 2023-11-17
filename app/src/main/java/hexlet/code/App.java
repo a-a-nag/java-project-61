@@ -29,19 +29,19 @@ public class App {
                 Cli.greeting();
                 break;
             case "2":
-                Even.checkIfNumberIsEven();
+                Even.startEven();
                 break;
             case "3":
-                Calc.solveExpression();
+                Calc.startCalc();
                 break;
             case "4":
-                GCD.playGCD();
+                GCD.startGCD();
                 break;
             case "5":
-                Progression.solveProgression();
+                Progression.startProgression();
                 break;
             case "6":
-                Prime.primeGame();
+                Prime.startPrime();
                 break;
             case "0":
                 System.out.println("Goodbye!");
