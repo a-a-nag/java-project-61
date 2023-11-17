@@ -36,8 +36,8 @@ public class Progression {
 
         for (int i = 1; i < progression.length; i++) {
 
-            int previousNumber = Integer.valueOf(progression[i - 1] );
-            progression[i] = String.valueOf(previousNumber+ step);
+            int previousNumber = Integer.valueOf(progression[i - 1]);
+            progression[i] = String.valueOf(previousNumber + step);
         }
 
         return progression;
